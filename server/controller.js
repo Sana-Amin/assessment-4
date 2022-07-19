@@ -1,19 +1,6 @@
-let desserts = require('./db.json');
-
 
 module.exports = {
 
-    getAllDesserts: (req, res) => {
-        res.status(200).send(desserts)
-        for (let i =0;i<desserts.length;i++)
-        {
-            desertItem = desserts[i]
-            
-        }
-    },
-
-
-/////////////////////////////////////////////////////////////
     getCompliment: (req, res) => {
         const compliments = ["Gee, you're a smart cookie!", "Cool shirt!", "Your Javascript skills are stellar."];
       
@@ -23,14 +10,17 @@ module.exports = {
       
         res.status(200).send(randomCompliment);
     },
-    getDessert:(req, res) => {
-        const desserts = ["Get some ice Cream!","Get some cake!","Get some cookies!","Get some pie!","Get some banana pudding!"];
-        let randomIndex = Math.floor(Math.random() * desserts.length);
-        let randomDessert = desserts[randomIndex];
+    getFortune: (req, res) => {
+        const fortunes = ["A friend asks only for your time not your money.",
+            "A friend is a present you give yourself.",
+            "A gambler not only will lose what he has, but also will lose what he doesn’t have.",
+            "A golden egg of opportunity falls into your lap this month.",
+            "A good friendship is often more important than a passionate romance."];
       
-       
-
-            res.status(200).send(randomDessert);
-},
+        let randomIndex = Math.floor(Math.random() * fortunes.length);
+        let randomFortune = fortunes[randomIndex];
+      
+        res.status(200).send(randomFortune);
+    }
 
 }
