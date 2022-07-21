@@ -1,4 +1,4 @@
-
+let cakesDB = [];
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -21,6 +21,34 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
       
         res.status(200).send(randomFortune);
-    }
+    },
+    getCake: (req, res) => {
+        const cakes = ["Go get choclate cake", "Go get cheescake", "Go get strawberry cake"];
+      
+        
+        let randomIndex = Math.floor(Math.random() * cakes.length);
+        let randomcakes = cakes[randomIndex];
 
+        cakesDB.push(randomcakes)
+
+        res.status(200).send(cakesDB);
+    }, 
+
+    deleteCake: (req, res) =>{
+        console.log(req.params.id)
+        const {id} = req.params;
+        cakesDB.splice(id,1);
+        res.status(200).send(cakesDB)
+    },
+   addCake: (req, res) =>{
+    const {value} = req.body
+    cakesDB.push(value)
+    res.status(200).send(cakesDB)
+   },
+//    updateCake: (req, res) => {
+//     const {id} = req.body
+//     cakesDB.put()
+//     res.status(200).send(cakesDB)
+//    }
+ 
 }
